@@ -1,5 +1,5 @@
 body {
-	background: #ff99ff;
+	background: #000055;
 	margin: 0;
 	padding: 0;
 	color: black;
@@ -9,7 +9,7 @@ body {
 	min-width: 300px;
 	display: inline-block;
 	height: 500px;
-	border: 2px solid black;
+	border: 2px solid white;
 	margin: 10px;
 	overflow: auto;
 }
