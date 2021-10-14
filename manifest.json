@@ -1,0 +1,22 @@
+{
+    // Required
+    "manifest_version": 3,
+    "name": "Timeout Extension",
+    "version": "0.1",
+
+    "action": {
+        "default_title": "Timeout Extension",
+        "default_popup": "popup.html"
+    },
+    "description": "Set timeouts for different sites",
+    "icons": {
+        "128": "icons/icon128.png"
+    },
+
+    "author": "nalek0",
+
+    "permissions": ["tabs", "storage", "contextMenus"],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
