@@ -1,0 +1,51 @@
+body {
+	background: #ff99ff;
+	margin: 0;
+	padding: 0;
+	color: black;
+}
+
+.view_part {
+	min-width: 300px;
+	display: inline-block;
+	height: 500px;
+	border: 2px solid black;
+	margin: 10px;
+	overflow: auto;
+}
+
+.site_block {
+	background: linear-gradient(135deg, #a5c4ff, #6cffff);
+	font-size: 22px;
+	padding:  10px;
+	border-radius: 10px;
+	margin: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.remove_button {
+	width: 30px;
+	cursor: pointer;
+	aspect-ratio: 1 / 1;
+	background: #ff0000;
+	border-radius: 5px;
+	margin-left: 20px;
+	display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.remove_button:hover,
+.remove_button:focus {
+	background: #fd6767;
+}
+.remove_button:active {
+	background: #b40542;
+}
+
+.dash {
+	width: 50%;
+	height: 3px;
+	background: black;
+}

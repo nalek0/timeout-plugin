@@ -1,3 +1,15 @@
+const readLocalStorage = async (key) => {
+	return new Promise((resolve, reject) => {
+	  chrome.storage.local.get([key], function (result) {
+	    if (result[key] === undefined) {
+	      reject();
+	    } else {
+	      resolve(result[key]);
+	    }
+	  });
+	});
+};
+
 class TimeoutWorkerClass {
 	addSite(urlPath, time) {
 		let urlObject = new URL(urlPath)
@@ -17,7 +29,7 @@ class TimeoutWorkerClass {
 	}
 
 	removeSite(urlPath) {
-		let urlObject = URL(urlPath)
+		let urlObject = new URL(urlPath)
 		chrome.storage.local.remove(urlObject.origin, () => {
 			console.log(`Removed item: ${urlObject.origin}`)
 		})
@@ -39,6 +51,10 @@ class TimeoutWorkerClass {
 					this.blockTab(tab)
 			}
 		})
+	}
+
+	async sendBlockedSites(sendResponse) {
+		chrome.storage.local.get(null, (results) => sendResponse(results))
 	}
 }
 
@@ -78,4 +94,15 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 	else if (info.menuItemId == "ama-free") {
 		TimeoutWorker.removeAllSites()
 	}
+})
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+	if (message.command === "get-data") {
+		TimeoutWorker.sendBlockedSites(sendResponse)
+	} else if (message.command === "remove-site") {
+		TimeoutWorker.removeSite(message.site)
+		sendResponse(true)
+	}
+
+	return true
 })

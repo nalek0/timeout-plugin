@@ -6,7 +6,7 @@
 
     "action": {
         "default_title": "Timeout Extension",
-        "default_popup": "popup.html"
+        "default_popup": "popup/index.html"
     },
     "description": "Set timeouts for different sites",
     "icons": {
